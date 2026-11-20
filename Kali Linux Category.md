@@ -1,6 +1,6 @@
 # Kali Linux Category
 ## Daftar Isi
-- [1. Resource Development] (./Resource-Development-Tools.md)
+- [1. Resource Development](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Resource%20Development%20Tools.md)
 - [2. Initial Access]
 - [3. Execution]
 - [4. Persistence]
