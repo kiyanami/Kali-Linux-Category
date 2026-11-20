@@ -1,3 +1,5 @@
 # Kali-Linux-Category
-# Resource Development Tools (Kali Linux)
-# Initial Access
+## Daftar Isi
+- [1. Resource Development Tools (Kali Linux)]
+- [2. Initial Access]
+
