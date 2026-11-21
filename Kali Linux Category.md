@@ -1,4 +1,4 @@
-# Kali Linux Category
+# Kali Linux Categories
 ## Daftar Isi
 - [1. Resource Development](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Resource%20Development%20Tools.md)
 - [2. Initial Access](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Initial%20Access.md)
