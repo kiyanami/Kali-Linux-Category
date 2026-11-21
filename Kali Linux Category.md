@@ -6,3 +6,5 @@
 - [4. Persistence](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Persistence.md)
 - [5. Privilage Excalation](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Privilege%20Escalation.md)
 - [6. Defense Evasion](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Defense%20Evasion.md)
+- [7. Credential Access](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Credential%20Access.md)
+- 
