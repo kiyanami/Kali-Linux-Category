@@ -1,4 +1,4 @@
-# [Kali Linux Category](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Kali%20Linux%20Category.md)
+# [Kali Linux Categories](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Kali%20Linux%20Category.md)
 # Execution
 
 Dokumentasi teknis mengenai perangkat lunak dan instrumen *open-source* yang diklasifikasikan ke dalam kategori **Execution** pada ekosistem keamanan siber Kali Linux.
