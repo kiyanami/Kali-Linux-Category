@@ -1,5 +1,5 @@
 # [Kali Linux Categories](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Kali%20Linux%20Category.md)
-# Exviltration
+# Exfiltration
 # 🛠️ Exfiltration Tools - Kali Linux 
 Dokumentasi ini berisi penjelasan mendalam mengenai berbagai perangkat lunak ekstraksi data (*Exfiltration*) dan pemindahan informasi dari sistem target yang terdapat dalam distribusi **Kali Linux**.
 
