@@ -16,4 +16,5 @@
 - [14. Impact](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Impact.md)
 - [15. Forensics](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Forensics.md)
 - [16. Services and Other Tools](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Services%20and%20Other%20Tools.md)
+- [Pentest Scenario Simulation Example](https://github.com/kiyanami/Kali-Linux-Category/blob/main/Pentest%20Scenario%20Simulation%20Example.md)
 
